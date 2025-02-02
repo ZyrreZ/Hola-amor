@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Amor, ¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffdde1;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff4d6d;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #ff1e4d;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: float 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mi Amor, ¿Quieres ser mi San Valentín? ❤️</h1>
+        <div class="buttons">
+            <button class="yes" onclick="alert('¡Estoy muy feliz de ser tu novio y pasar esta fecha juntos ❤️!')">Sí</button>
+            <button class="no" onmouseover="mueveBoton(this)">No</button>
+        </div>
+    </div>
+    <script>
+        function mueveBoton(btn) {
+            let x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            let y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        }
+        function creaCorazones() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = `${Math.random() * 100}vh`;
+                heart.style.animationDuration = `${2 + Math.random() * 3}s`;
+                document.body.appendChild(heart);
+            }
+        }
+        creaCorazones();
+    </script>
+</body>
+</html>
